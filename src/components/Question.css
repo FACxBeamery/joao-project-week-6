@@ -1,0 +1,19 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form__answers-wrapper {
+	display: grid;
+	grid-template-columns: 20vw 20vh;
+	grid-gap: 0.5rem;
+}
+
+.form__answer {
+	border: 0.125rem solid #e8e8e8;
+	border-radius: 0.125rem;
+	padding: 0.5rem 0.75rem;
+	display: flex;
+	justify-content: space-between;
+}
