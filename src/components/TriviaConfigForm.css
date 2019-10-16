@@ -1,0 +1,12 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form__input {
+}
+
+.form__input--error {
+	border: 1px solid red;
+}
