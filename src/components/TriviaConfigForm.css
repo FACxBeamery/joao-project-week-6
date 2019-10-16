@@ -5,8 +5,14 @@
 }
 
 .form__input {
+	border: 0.125rem solid rgb(201, 201, 201);
+	border-radius: 0.125rem;
+	padding: 0.5rem;
+	width: 20vw;
 }
 
 .form__input--error {
-	border: 1px solid red;
+	border: 0.125rem solid red;
+	border-radius: 0.125rem;
+	padding: 0.5rem;
 }
