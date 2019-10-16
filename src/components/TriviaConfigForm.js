@@ -57,7 +57,6 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				id="nrOfquestions"
 				min="1"
 				max="50"
-				ue="30"
 				value={inputs.nrOfQuestions}
 				onChange={handleInputChange}
 				className={
