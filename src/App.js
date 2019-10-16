@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import TriviaConfigForm from "./components/TriviaConfigForm";
 import Trivia from "./components/Trivia";
+import Progress from "./components/Progress";
 
 function App() {
 	const [triviaState, setTriviaState] = useState("configuringForm");
@@ -17,11 +18,14 @@ function App() {
 				/>
 			) : null}
 			{triviaState === "startTrivia" ? (
-				<Trivia
-					configDetails={configDetails}
-					points={points}
-					setPoints={setPoints}
-				/>
+				<>
+					<Progress points={points} />
+					<Trivia
+						configDetails={configDetails}
+						points={points}
+						setPoints={setPoints}
+					/>
+				</>
 			) : null}
 		</div>
 	);
