@@ -11,27 +11,33 @@ const Question = ({
 	setPoints,
 	points,
 	setActiveQuestionIndex,
-	activeQuestionIndex
+	activeQuestionIndex,
+	setProgress
 }) => {
 	const [selectedAnswer, setSelectedAnswer] = useState("");
 	const handleSubmit = (e) => {
 		if (e) {
 			e.preventDefault();
-			if (selectedAnswer === "") {
-				// score stays the same
-				// stay on the same question
-				// do styling
-			} else {
+			if (selectedAnswer) {
 				if (selectedAnswer === correctAnswer) {
-					// increase score
-					// move on to the next
 					setPoints(points + 20);
-					setActiveQuestionIndex(activeQuestionIndex + 1);
-					console.log("POINTS: ", points);
-				} else {
-					// nope
+					if (points === 100) {
+						setProgress("won");
+					} else {
+						setActiveQuestionIndex(activeQuestionIndex + 1);
+					}
+				} else if (
+					activeQuestionIndex !== 0 &&
+					selectedAnswer !== correctAnswer &&
+					selectedAnswer
+				) {
+					setPoints(points - 20);
+					if (points === 0) {
+						setProgress("lost");
+					}
 				}
 			}
+			setSelectedAnswer("");
 		}
 	};
 	const handleInputChange = (e) => {

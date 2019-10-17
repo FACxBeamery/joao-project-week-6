@@ -5,7 +5,7 @@ import Question from "./Question";
 import getQuestions from "../utils/getQuestions";
 import { shuffleArray } from "../utils/shuffleArray";
 
-const Trivia = ({ configDetails, points, setPoints }) => {
+const Trivia = ({ configDetails, points, setPoints, setProgress }) => {
 	const [triviaQuestions, setTriviaQuestions] = useState([]);
 	const [activeQuestion, setActiveQuestion] = useState({});
 	const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
@@ -43,6 +43,7 @@ const Trivia = ({ configDetails, points, setPoints }) => {
 			points={points}
 			setActiveQuestionIndex={setActiveQuestionIndex}
 			activeQuestionIndex={activeQuestionIndex}
+			setProgress={setProgress}
 		/>
 	) : (
 		<h3>loading...</h3>

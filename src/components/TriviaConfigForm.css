@@ -4,15 +4,22 @@
 	align-items: center;
 }
 
+.form__label {
+	margin-bottom: 1rem;
+}
+
 .form__input {
-	border: 0.125rem solid rgb(201, 201, 201);
-	border-radius: 0.125rem;
+	width: 60vw;
+	margin-bottom: 2rem;
+	font-size: 1rem;
+}
+
+.form__input-text {
+	border: none;
+	border-bottom: 0.125rem solid rgb(201, 201, 201);
 	padding: 0.5rem;
-	width: 20vw;
 }
 
 .form__input--error {
-	border: 0.125rem solid red;
-	border-radius: 0.125rem;
-	padding: 0.5rem;
+	border-bottom: 0.125rem solid red;
 }
