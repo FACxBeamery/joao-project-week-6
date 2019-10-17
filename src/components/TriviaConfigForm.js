@@ -36,7 +36,9 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 	];
 	return (
 		<form className="form" onSubmit={handleSubmit}>
-			<label htmlFor="userName">What's your name? </label>
+			<label className="form__label" htmlFor="userName">
+				What's your name?{" "}
+			</label>
 			<input
 				type="text"
 				name="userName"
@@ -45,29 +47,16 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				defaultValue={inputs.userName}
 				className={
 					inputs.userName === ""
-						? "form__input--error"
-						: "form__input"
+						? "form__input form__input--error form__input-text"
+						: "form__input form__input-text"
 				}
 			></input>
 
-			{/* <label htmlFor="nrOfquestions">How many questions</label>
-			<input
-				type="number"
-				name="nrOfquestions"
-				id="nrOfquestions"
-				min="1"
-				max="50"
-				defaultValue={inputs.nrOfQuestions}
-				onChange={handleInputChange}
-				className={
-					inputs.nrOfquestions === ""
-						? "form__input--error"
-						: "form__input"
-				}
-			></input> */}
-
-			<label htmlFor="triviaCategory">Select Category: </label>
+			<label className="form__label" htmlFor="triviaCategory">
+				Select Category:{" "}
+			</label>
 			<select
+				className="form__input"
 				name="triviaCategory"
 				defaultValue={inputs.categoryChosen}
 				onChange={handleInputChange}
@@ -77,8 +66,11 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				})}
 			</select>
 
-			<label htmlFor="triviaDifficulty">Select Difficulty: </label>
+			<label className="form__label" htmlFor="triviaDifficulty">
+				Select Difficulty:{" "}
+			</label>
 			<select
+				className="form__input"
 				name="triviaDifficulty"
 				defaultValue={inputs.difficultyLevel}
 				onChange={handleInputChange}
