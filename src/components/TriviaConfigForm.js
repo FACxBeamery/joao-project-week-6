@@ -26,7 +26,8 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 		{ value: "9", name: "General Knowledge" },
 		{ value: "12", name: "Entertainment: Music" },
 		{ value: "18", name: "Science: Computers" },
-		{ value: "19", name: "Science: Mathematics" }
+		{ value: "19", name: "Science: Mathematics" },
+		{ value: "14", name: "Entertainment: Television" }
 	];
 	const triviaDificulties = [
 		{ value: "any", name: "Any Difficulty" },
