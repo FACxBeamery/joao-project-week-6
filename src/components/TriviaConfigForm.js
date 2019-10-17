@@ -82,7 +82,7 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				required
 				className={`${styles.form__input} ${styles.form__select} `}
 				name="triviaDifficulty"
-				defaultValue={inputs.difficultyLevel}
+				defaultValue={inputs.triviaDifficulty}
 				onChange={handleInputChange}
 			>
 				<option value="">Please select</option>
