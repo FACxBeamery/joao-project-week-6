@@ -42,7 +42,7 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				name="userName"
 				id="userName"
 				onChange={handleInputChange}
-				value={inputs.userName}
+				defaultValue={inputs.userName}
 				className={
 					inputs.userName === ""
 						? "form__input--error"
@@ -50,26 +50,26 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				}
 			></input>
 
-			<label htmlFor="nrOfquestions">How many questions</label>
+			{/* <label htmlFor="nrOfquestions">How many questions</label>
 			<input
 				type="number"
 				name="nrOfquestions"
 				id="nrOfquestions"
 				min="1"
 				max="50"
-				value={inputs.nrOfQuestions}
+				defaultValue={inputs.nrOfQuestions}
 				onChange={handleInputChange}
 				className={
 					inputs.nrOfquestions === ""
 						? "form__input--error"
 						: "form__input"
 				}
-			></input>
+			></input> */}
 
 			<label htmlFor="triviaCategory">Select Category: </label>
 			<select
 				name="triviaCategory"
-				value={inputs.categoryChosen}
+				defaultValue={inputs.categoryChosen}
 				onChange={handleInputChange}
 			>
 				{triviaCategories.map(({ value, name }, i) => {
@@ -80,7 +80,7 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 			<label htmlFor="triviaDifficulty">Select Difficulty: </label>
 			<select
 				name="triviaDifficulty"
-				value={inputs.difficultyLevel}
+				defaultValue={inputs.difficultyLevel}
 				onChange={handleInputChange}
 			>
 				{triviaDificulties.map(({ value, name }, i) => {

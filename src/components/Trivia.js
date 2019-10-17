@@ -11,37 +11,38 @@ const Trivia = ({ configDetails, points, setPoints }) => {
 	const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 	useEffect(() => {
 		getQuestions(configDetails).then((data) => {
-			console.log(data);
-
 			setTriviaQuestions(data.results);
-			setActiveQuestion({
-				answers: shuffleArray([
-					data.results[activeQuestionIndex].correct_answer,
-					...data.results[activeQuestionIndex].incorrect_answers
-				]),
-				...data.results[activeQuestionIndex]
-			});
-			console.log(activeQuestion);
-		});
-	}, []);
+			const unescapedAnswers = [
+				...data.results[activeQuestionIndex].incorrect_answers.map(
+					(answer) => unescape(answer)
+				),
+				unescape(data.results[activeQuestionIndex].correct_answer)
+			];
 
-	const {
-		answers,
-		category,
-		type,
-		difficulty,
-		question,
-		correct_answer,
-		incorrect_answers
-	} = activeQuestion;
+			setActiveQuestion({
+				answers: shuffleArray(unescapedAnswers),
+				questionName: unescape(
+					data.results[activeQuestionIndex].question
+				),
+				correctAnswer: unescape(
+					data.results[activeQuestionIndex].correct_answer
+				)
+			});
+		});
+	}, [activeQuestionIndex]);
+
+	const { answers, questionName, correctAnswer } = activeQuestion;
 
 	return activeQuestion ? (
 		<Question
-			question={question}
+			question={questionName}
 			answers={answers}
-			incorrectAnswers={incorrect_answers}
-			correctAnswer={correct_answer}
+			correctAnswer={correctAnswer}
 			index={activeQuestion}
+			setPoints={setPoints}
+			points={points}
+			setActiveQuestionIndex={setActiveQuestionIndex}
+			activeQuestionIndex={activeQuestionIndex}
 		/>
 	) : (
 		<h3>loading...</h3>

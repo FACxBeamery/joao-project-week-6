@@ -7,7 +7,11 @@ const Question = ({
 	answers,
 	correctAnswer,
 	incorrectAnswers,
-	index
+	index,
+	setPoints,
+	points,
+	setActiveQuestionIndex,
+	activeQuestionIndex
 }) => {
 	const [selectedAnswer, setSelectedAnswer] = useState("");
 	const handleSubmit = (e) => {
@@ -21,6 +25,9 @@ const Question = ({
 				if (selectedAnswer === correctAnswer) {
 					// increase score
 					// move on to the next
+					setPoints(points + 20);
+					setActiveQuestionIndex(activeQuestionIndex + 1);
+					console.log("POINTS: ", points);
 				} else {
 					// nope
 				}
@@ -57,6 +64,7 @@ const Question = ({
 					);
 				})}
 			</div>
+			<button type="submit">Answer</button>
 		</form>
 	) : (
 		<h3>Loading Question and answers</h3>
