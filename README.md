@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[☾Play it live☾](https://project-week-6-joao.netlify.com)
 
 Currently:  
 [![Netlify Status](https://api.netlify.com/api/v1/badges/991f453d-bcc3-4bbe-95fe-842e0e57790f/deploy-status)](https://app.netlify.com/sites/optimistic-einstein-b9a9a0/deploys)
