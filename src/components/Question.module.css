@@ -15,7 +15,7 @@
 
 .form__answers-wrapper {
 	display: grid;
-	grid-template-columns: 30vw 30vh;
+	grid-template-columns: 30vw 30vw;
 	grid-gap: 0.5rem;
 	font-size: 1.5rem;
 }

@@ -14,7 +14,7 @@ const Progress = ({
 		if (points >= 20 && points < 100) {
 			setProgressMessage(`${points}/100 points `);
 		} else if (points < 20) {
-			setProgressMessage(`You lost!😢 `);
+			setProgressMessage(`You lost!😢`);
 		} else if (points === 100) {
 			setProgressMessage(`You won!👑`);
 		}

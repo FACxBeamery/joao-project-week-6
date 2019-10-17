@@ -69,6 +69,7 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				defaultValue={inputs.categoryChosen}
 				onChange={handleInputChange}
 			>
+				<option value="">Please select</option>
 				{triviaCategories.map(({ value, name }, i) => {
 					return <Option key={value} value={value} name={name} />;
 				})}
@@ -84,6 +85,7 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				defaultValue={inputs.difficultyLevel}
 				onChange={handleInputChange}
 			>
+				<option value="">Please select</option>
 				{triviaDificulties.map(({ value, name }, i) => {
 					return <Option key={value} value={value} name={name} />;
 				})}
