@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Option from "./Option";
 
-import "./TriviaConfigForm.css";
+import styles from "./TriviaConfigForm.module.css";
 
 const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 	const [inputs, setInputs] = useState({});
@@ -35,28 +35,36 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 		{ value: "hard", name: "Hard" }
 	];
 	return (
-		<form className="form" onSubmit={handleSubmit}>
-			<label className="form__label" htmlFor="userName">
+		<form className={styles.form} onSubmit={handleSubmit}>
+			<label className={styles.form__label} htmlFor="userName">
 				What's your name?{" "}
 			</label>
 			<input
+				required
 				type="text"
 				name="userName"
 				id="userName"
 				onChange={handleInputChange}
 				defaultValue={inputs.userName}
 				className={
-					inputs.userName === ""
-						? "form__input form__input--error form__input-text"
-						: "form__input form__input-text"
+					inputs.userName !== ""
+						? `${styles.form__input} ${styles.form__text} ${styles.form__filled}`
+						: `${styles.form__input} ${styles.form__text} ${styles.form__error}`
 				}
 			></input>
+			{inputs.userName === "" ? (
+				<p className={styles.form__message}>
+					This field is required and needs to be at least 2 chars
+					long.
+				</p>
+			) : null}
 
-			<label className="form__label" htmlFor="triviaCategory">
+			<label className={styles.form__label} htmlFor="triviaCategory">
 				Select Category:{" "}
 			</label>
 			<select
-				className="form__input"
+				required
+				className={`${styles.form__input} ${styles.form__select} `}
 				name="triviaCategory"
 				defaultValue={inputs.categoryChosen}
 				onChange={handleInputChange}
@@ -66,11 +74,12 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 				})}
 			</select>
 
-			<label className="form__label" htmlFor="triviaDifficulty">
+			<label className={styles.form__label} htmlFor="triviaDifficulty">
 				Select Difficulty:{" "}
 			</label>
 			<select
-				className="form__input"
+				required
+				className={`${styles.form__input} ${styles.form__select} `}
 				name="triviaDifficulty"
 				defaultValue={inputs.difficultyLevel}
 				onChange={handleInputChange}
@@ -79,7 +88,9 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 					return <Option key={value} value={value} name={name} />;
 				})}
 			</select>
-			<button type="submit">submit</button>
+			<button className={styles["form__button"]} type="submit">
+				start trivia
+			</button>
 		</form>
 	);
 };

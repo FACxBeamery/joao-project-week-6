@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Question.css";
+import styles from "./Question.module.css";
 
 const Question = ({
 	question,
@@ -32,9 +32,6 @@ const Question = ({
 					selectedAnswer
 				) {
 					setPoints(points - 20);
-					if (points === 0) {
-						setProgress("lost");
-					}
 				}
 			}
 			setSelectedAnswer("");
@@ -46,13 +43,13 @@ const Question = ({
 	};
 
 	return answers ? (
-		<form onSubmit={handleSubmit} className="form">
-			<p>{question}</p>
-			<div className="form__answers-wrapper">
+		<form onSubmit={handleSubmit} className={styles["form"]}>
+			<p className={styles["form__question"]}>{question}</p>
+			<div className={styles["form__answers-wrapper"]}>
 				{answers.map((answer) => {
 					return (
 						<label
-							className="form__answer"
+							className={styles["form__answer"]}
 							key={answer}
 							htmlFor={answer}
 						>
@@ -70,10 +67,12 @@ const Question = ({
 					);
 				})}
 			</div>
-			<button type="submit">Answer</button>
+			<button className={styles["form__button"]} type="submit">
+				Answer
+			</button>
 		</form>
 	) : (
-		<h3>Loading Question and answers</h3>
+		<h3 className={styles["form"]}>Loading Question and answers...</h3>
 	);
 };
 

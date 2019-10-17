@@ -1,0 +1,53 @@
+.progress__wrapper {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+}
+
+.progress__message {
+	text-align: center;
+	width: 70vw;
+	margin: auto;
+	margin-bottom: 0rem;
+	border: 0.5rem solid #ca9cff;
+	border-bottom: none;
+	border-radius: 0.75rem;
+	border-bottom-left-radius: 0rem;
+	border-bottom-right-radius: 0rem;
+	background: #c1ff0f;
+	font-size: 3rem;
+}
+
+.progress__message--lose {
+	text-align: center;
+	border-bottom: 0.5rem solid #ff6fda;
+	border-radius: 0.75rem;
+	border-bottom-left-radius: 0.75rem;
+	border-bottom-right-radius: 0.75rem;
+	background: #ffffff;
+}
+
+.progress__message--win {
+	text-align: center;
+	border-bottom: 0.5rem solid #7bfff8;
+	border-radius: 0.75rem;
+	border-bottom-left-radius: 0.75rem;
+	border-bottom-right-radius: 0.75rem;
+	background: #e6ff75;
+}
+
+.progress__button {
+	font-size: 2rem;
+	border: 0.25rem solid rgb(151, 119, 187);
+	border-radius: 0.125rem;
+	background: #65faaf;
+	cursor: pointer;
+	transition: background 0.3s;
+	color: #444;
+	font-weight: 700;
+}
+
+.progress__button:hover {
+	background: #04ff81;
+}

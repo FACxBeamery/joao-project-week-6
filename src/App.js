@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import Header from "./components/Header";
 import TriviaConfigForm from "./components/TriviaConfigForm";
 import Trivia from "./components/Trivia";
@@ -11,7 +11,7 @@ function App() {
 	const [points, setPoints] = useState(20);
 	const [progress, setProgress] = useState("playing");
 	return (
-		<div className="App">
+		<div className={styles.app}>
 			<Header points={points} />
 			{triviaState === "configuringForm" ? (
 				<TriviaConfigForm
@@ -23,8 +23,13 @@ function App() {
 			) : null}
 			{triviaState === "startTrivia" ? (
 				<>
-					<Progress points={points} setTriviaState={setTriviaState} />
-					{progress === "playing" ? (
+					<Progress
+						setPoints={setPoints}
+						points={points}
+						setTriviaState={setTriviaState}
+						setConfigDetails={setConfigDetails}
+					/>
+					{progress === "playing" && points < 100 && points > 0 ? (
 						<Trivia
 							configDetails={configDetails}
 							points={points}
