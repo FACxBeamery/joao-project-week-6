@@ -3,23 +3,22 @@ import React, { useState, useEffect } from "react";
 import PointsMessage from "./PointsMessage";
 
 import styles from "./Question.module.css";
+import { shuffleArray } from "../utils/shuffleArray";
 
-const Question = ({
-	question,
-	answers,
-	correctAnswer,
-	incorrectAnswers,
-	index,
-	setPoints,
-	points,
-	setActiveQuestionIndex,
-	activeQuestionIndex,
-	setProgress
-}) => {
+const Question = ({ questions, setPoints, points, setProgress }) => {
 	const [selectedAnswer, setSelectedAnswer] = useState("");
 	const [message, setMessage] = useState("");
 	const [visible, setAlertVisibility] = useState(false);
+	const [activeQuestion, setActiveQuestion] = useState({});
+	const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 	const [duration, setDuration] = useState(2000);
+	const changeQuestion = (answers, question, correctans) => {
+		setActiveQuestion({
+			answers,
+			questionName: question,
+			correctAnswer: correctans
+		});
+	};
 	const handleSubmit = (e) => {
 		if (e) {
 			e.preventDefault();
@@ -51,7 +50,23 @@ const Question = ({
 		setSelectedAnswer(e.target.value);
 	};
 
-	return answers ? (
+	useEffect(() => {
+		const unescapedAnswers = [
+			...questions[activeQuestionIndex].incorrect_answers.map((answer) =>
+				decodeURIComponent(answer)
+			),
+			decodeURIComponent(questions[activeQuestionIndex].correct_answer)
+		];
+		changeQuestion(
+			shuffleArray(unescapedAnswers),
+			decodeURIComponent(questions[activeQuestionIndex].question),
+			decodeURIComponent(questions[activeQuestionIndex].correct_answer)
+		);
+	}, [activeQuestionIndex]);
+
+	const { answers, questionName, correctAnswer } = activeQuestion;
+
+	return activeQuestion && answers ? (
 		<>
 			<PointsMessage
 				visible={visible}
@@ -62,7 +77,7 @@ const Question = ({
 			</PointsMessage>
 
 			<form onSubmit={handleSubmit} className={styles["form"]}>
-				<p className={styles["form__question"]}>{question}</p>
+				<p className={styles["form__question"]}>{questionName}</p>
 				<div className={styles["form__answers-wrapper"]}>
 					{answers.map((answer) => {
 						return (

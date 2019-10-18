@@ -6,45 +6,18 @@ import getQuestions from "../utils/getQuestions";
 import { shuffleArray } from "../utils/shuffleArray";
 
 const Trivia = ({ configDetails, points, setPoints, setProgress }) => {
-	const [triviaQuestions, setTriviaQuestions] = useState([]);
-	const [activeQuestion, setActiveQuestion] = useState({});
-	const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
+	const [triviaQuestions, setTriviaQuestions] = useState(undefined);
 	useEffect(() => {
 		getQuestions(configDetails).then((data) => {
-			setTriviaQuestions(data.results);
-			const unescapedAnswers = [
-				...data.results[activeQuestionIndex].incorrect_answers.map(
-					(answer) => decodeURIComponent(answer)
-				),
-				decodeURIComponent(
-					data.results[activeQuestionIndex].correct_answer
-				)
-			];
-
-			setActiveQuestion({
-				answers: shuffleArray(unescapedAnswers),
-				questionName: decodeURIComponent(
-					data.results[activeQuestionIndex].question
-				),
-				correctAnswer: decodeURIComponent(
-					data.results[activeQuestionIndex].correct_answer
-				)
-			});
+			setTriviaQuestions(shuffleArray(data.results));
 		});
-	}, [activeQuestionIndex]);
+	}, []);
 
-	const { answers, questionName, correctAnswer } = activeQuestion;
-
-	return activeQuestion ? (
+	return triviaQuestions ? (
 		<Question
-			question={questionName}
-			answers={answers}
-			correctAnswer={correctAnswer}
-			index={activeQuestion}
+			questions={triviaQuestions}
 			setPoints={setPoints}
 			points={points}
-			setActiveQuestionIndex={setActiveQuestionIndex}
-			activeQuestionIndex={activeQuestionIndex}
 			setProgress={setProgress}
 		/>
 	) : (
