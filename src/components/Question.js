@@ -7,6 +7,7 @@ import { shuffleArray } from "../utils/shuffleArray";
 
 const Question = ({ questions, setPoints, points, setProgress }) => {
 	const [selectedAnswer, setSelectedAnswer] = useState("");
+	const [isSubmitted, setisSubmitted] = useState(false);
 	const [message, setMessage] = useState("");
 	const [visible, setAlertVisibility] = useState(false);
 	const [activeQuestion, setActiveQuestion] = useState({});
@@ -29,9 +30,11 @@ const Question = ({ questions, setPoints, points, setProgress }) => {
 					if (points === 100) {
 						setProgress("won");
 					} else {
+						setisSubmitted(true);
 						setMessage("+20points 🤯correct! keep going");
 						setAlertVisibility(true);
 						setActiveQuestionIndex(activeQuestionIndex + 1);
+						setisSubmitted(false);
 					}
 				} else if (
 					activeQuestionIndex !== 0 &&
@@ -100,7 +103,11 @@ const Question = ({ questions, setPoints, points, setProgress }) => {
 						);
 					})}
 				</div>
-				<button className={styles["form__button"]} type="submit">
+				<button
+					disabled={isSubmitted}
+					className={styles["form__button"]}
+					type="submit"
+				>
 					Answer
 				</button>
 			</form>
