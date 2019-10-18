@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ProgressButton from "./ProgressButton";
 
 import styles from "./Progress.module.css";
 
@@ -38,16 +39,11 @@ const Progress = ({
 				{progressMessage}
 			</h1>
 			{points < 20 || points === 100 ? (
-				<button
-					className={styles["progress__button"]}
-					onClick={(e) => {
-						setTriviaState("configuringForm");
-						setConfigDetails({});
-						setPoints(20);
-					}}
-				>
-					Restart?
-				</button>
+				<ProgressButton
+					setTriviaState={setTriviaState}
+					setConfigDetails={setConfigDetails}
+					setPoints={setPoints}
+				/>
 			) : null}
 		</div>
 	) : (
