@@ -12,7 +12,7 @@ function App() {
 	const [progress, setProgress] = useState("playing");
 	return (
 		<div className={styles.app}>
-			<Header points={points} />
+			<Header configDetails={configDetails} />
 			{triviaState === "configuringForm" ? (
 				<TriviaConfigForm
 					formState={0}
