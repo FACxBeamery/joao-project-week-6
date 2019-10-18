@@ -14,17 +14,19 @@ const Trivia = ({ configDetails, points, setPoints, setProgress }) => {
 			setTriviaQuestions(data.results);
 			const unescapedAnswers = [
 				...data.results[activeQuestionIndex].incorrect_answers.map(
-					(answer) => unescape(answer)
+					(answer) => decodeURIComponent(answer)
 				),
-				unescape(data.results[activeQuestionIndex].correct_answer)
+				decodeURIComponent(
+					data.results[activeQuestionIndex].correct_answer
+				)
 			];
 
 			setActiveQuestion({
 				answers: shuffleArray(unescapedAnswers),
-				questionName: unescape(
+				questionName: decodeURIComponent(
 					data.results[activeQuestionIndex].question
 				),
-				correctAnswer: unescape(
+				correctAnswer: decodeURIComponent(
 					data.results[activeQuestionIndex].correct_answer
 				)
 			});
