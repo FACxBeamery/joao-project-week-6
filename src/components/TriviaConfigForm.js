@@ -6,12 +6,14 @@ import styles from "./TriviaConfigForm.module.css";
 
 const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 	const [inputs, setInputs] = useState({});
+	const [submitted, setSubmitted] = useState(false);
 
 	const handleSubmit = (event) => {
 		if (event) {
 			event.preventDefault();
 			setTriviaState("startTrivia");
 			setConfigDetails(inputs);
+			setSubmitted(true);
 		}
 	};
 	const handleInputChange = (event) => {
@@ -35,6 +37,7 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 		{ value: "medium", name: "Medium" },
 		{ value: "hard", name: "Hard" }
 	];
+
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<label className={styles.form__label} htmlFor="userName">
@@ -53,7 +56,7 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 						: `${styles.form__input} ${styles.form__text} ${styles.form__error}`
 				}
 			></input>
-			{inputs.userName === "" ? (
+			{inputs.userName === "" || !/\S/.test(inputs.userName) ? (
 				<p className={styles.form__message}>
 					This field is required and needs to be at least 2 chars
 					long.
@@ -91,7 +94,11 @@ const TriviaConfigForm = ({ setTriviaState, setConfigDetails }) => {
 					return <Option key={value} value={value} name={name} />;
 				})}
 			</select>
-			<button className={styles["form__button"]} type="submit">
+			<button
+				disabled={submitted}
+				className={styles["form__button"]}
+				type="submit"
+			>
 				start trivia
 			</button>
 		</form>
