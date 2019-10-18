@@ -1,5 +1,8 @@
 # T R I V I A   C R A Z E
 
+[☾Play it live☾](https://project-week-6-joao.netlify.com)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/991f453d-bcc3-4bbe-95fe-842e0e57790f/deploy-status)](https://app.netlify.com/sites/optimistic-einstein-b9a9a0/deploys)
 
 ## Overview
 
@@ -11,12 +14,12 @@ Try to win! 😊
 ## Technical
 
 This is a React app that uses the [Open Trivia Database API](https://opentdb.com/) to fetch the questions. 
+React Hooks were used to control form state/user input, API calls and conditional rendering. 
 
 
-[☾Play it live☾](https://project-week-6-joao.netlify.com)
 
-Currently:  
-[![Netlify Status](https://api.netlify.com/api/v1/badges/991f453d-bcc3-4bbe-95fe-842e0e57790f/deploy-status)](https://app.netlify.com/sites/optimistic-einstein-b9a9a0/deploys)
+
+
 
 ## Available Scripts
 
