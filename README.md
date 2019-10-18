@@ -1,3 +1,18 @@
+# T R I V I A   C R A Z E
+
+
+## Overview
+
+Set up a quiz with a chosen or random topic you would like to be tested on. 
+You start with 20 points and each time you answer correctly, you get another 20points. Otherwise, you lose 20. 
+Try to win! 😊 
+
+
+## Technical
+
+This is a React app that uses the [Open Trivia Database API](https://opentdb.com/) to fetch the questions. 
+
+
 [☾Play it live☾](https://project-week-6-joao.netlify.com)
 
 Currently:  
