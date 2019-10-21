@@ -24,25 +24,30 @@ const Question = ({ questions, setPoints, points, setProgress }) => {
 		if (e) {
 			e.preventDefault();
 			if (selectedAnswer) {
-				if (selectedAnswer === correctAnswer) {
-					setPoints(points + 20);
+				if (activeQuestionIndex < 20) {
+					if (selectedAnswer === correctAnswer) {
+						setPoints(points + 20);
 
-					if (points === 100) {
-						setProgress("won");
-					} else {
-						setisSubmitted(true);
-						setMessage("+20points 🤯correct! keep going");
-						setAlertVisibility(true);
-						setActiveQuestionIndex(activeQuestionIndex + 1);
-						setisSubmitted(false);
+						if (points === 100) {
+							setProgress("won");
+						} else {
+							setisSubmitted(true);
+							setMessage("+20points 🤯correct! keep going");
+							setAlertVisibility(true);
+							setActiveQuestionIndex(activeQuestionIndex + 1);
+
+							setisSubmitted(false);
+						}
+					} else if (
+						activeQuestionIndex !== 0 &&
+						selectedAnswer !== correctAnswer &&
+						selectedAnswer
+					) {
+						setMessage("-20points🤒🤒 try again!");
+						setPoints(points - 20);
 					}
-				} else if (
-					activeQuestionIndex !== 0 &&
-					selectedAnswer !== correctAnswer &&
-					selectedAnswer
-				) {
-					setMessage("-20points🤒🤒 try again!");
-					setPoints(points - 20);
+				} else {
+					setPoints(0);
 				}
 			}
 			setSelectedAnswer("");
